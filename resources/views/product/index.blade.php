@@ -13,9 +13,9 @@
             <tr><th>ID</th><th>Tên</th><th>Giá</th><th>Hành động</th></tr>
         </thead>
         <tbody>
-            <tr><td>100</td><td>Sample Widget</td><td>$10.00</td><td><a href="{{ route('product.show', ['id' => '100']) }}">Xem</a></td></tr>
-            <tr><td>200</td><td>Another Gadget</td><td>$25.50</td><td><a href="{{ url('/product/200') }}">Xem</a></td></tr>
-            <tr><td>abc-xyz</td><td>String ID Product</td><td>$7.99</td><td><a href="{{ route('product.show', ['id' => 'abc-xyz']) }}">Xem</a></td></tr>
+            <tr><td>1</td><td>Áo</td><td>1.000.000 ₫</td><td><a href="{{ route('product.show', ['id' => '1']) }}">Xem</a></td></tr>
+            <tr><td>2</td><td>Quần</td><td>200.000 ₫</td><td><a href="{{ route('product.show', ['id' => '2']) }}">Xem</a></td></tr>
+            <tr><td>3</td><td>Mũ</td><td>50.000 ₫</td><td><a href="{{ route('product.show', ['id' => '3']) }}">Xem</a></td></tr>
         </tbody>
     </table>
 
