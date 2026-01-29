@@ -21,38 +21,37 @@
         @csrf
         <p>
             <label>Tên đăng nhập:<br>
-            <input type="text" name="username" value="Nqthien" required></label>
+            <input type="text" name="username" value="{{ old('username') }}" required></label>
         </p>
         <p>
             <label>Mật khẩu:<br>
-            <input type="password" name="password" value="240824" required></label>
+            <input type="password" name="password" required></label>
         </p>
         <p>
             <label>Nhập lại mật khẩu:<br>
-            <input type="password" name="repassword" value="240824" required></label>
+            <input type="password" name="repassword" required></label>
         </p>
         <p>
             <label>MSSV:<br>
-            <input type="text" name="mssv" value="0149367" required></label>
+            <input type="text" name="mssv" value="{{ old('mssv') }}" required></label>
         </p>
         <p>
             <label>Lớp:<br>
-            <input type="text" name="lopmonhoc" value="67PM1" required></label>
+            <input type="text" name="lopmonhoc" value="{{ old('lopmonhoc') }}" required></label>
         </p>
         <p>
             <label>Giới tính:<br>
             <select name="gioitinh" required>
-                <option value="male" selected>male</option>
-                <option value="female">female</option>
-                <option value="other">other</option>
+                <option value="" disabled {{ old('gioitinh') ? '' : 'selected' }}>Chọn giới tính</option>
+                <option value="male" {{ old('gioitinh') == 'male' ? 'selected' : '' }}>Nam</option>
+                <option value="female" {{ old('gioitinh') == 'female' ? 'selected' : '' }}>Nữ</option>
+                <option value="other" {{ old('gioitinh') == 'other' ? 'selected' : '' }}>Khác</option>
             </select>
             </label>
         </p>
 
-        <p><small>Ví dụ: Nqthien, 240824, 240824, 0149367, 67PM1, male</small></p>
-
         <p>
-            <button type="submit">Sign In</button>
+            <button type="submit">Đăng ký</button>
         </p>
     </form>
 

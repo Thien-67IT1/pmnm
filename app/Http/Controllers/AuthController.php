@@ -46,7 +46,7 @@ class AuthController extends Controller
 
         // Mật khẩu phải khớp
         if ($password !== $repassword) {
-            return response('Registration failed', 200);
+            return response('Đăng ký thất bại', 200);
         }
 
         // So sánh thông tin
@@ -55,9 +55,9 @@ class AuthController extends Controller
             && $mssv === $sample['mssv']
             && $lopmonhoc === $sample['lopmonhoc']
             && strtolower($gioitinh) === strtolower($sample['gioitinh'])) {
-            return response('Registration successful!', 200);
+            return response('Đăng ký thành công!', 200);
         }
 
-        return response('Registration failed', 200);
+        return response('Đăng ký thất bại', 200);
     }
 }

@@ -27,10 +27,10 @@ Route::prefix('product')->group(function () {
         return view('product.add');
     })->name('product.add'); // Ví dụ đặt tên route: 'product.add'
 
-    // Hiển thị sản phẩm theo id (kiểu chuỗi, mặc định '123')
-    Route::get('{id?}', function ($id = '123') {
+    // Hiển thị sản phẩm theo id (kiểu chuỗi, không có giá trị mặc định)
+    Route::get('{id}', function ($id) {
         return view('product.show', ['id' => $id]);
-    })->where('id', '.*')->name('product.show');
+    })->where('id', '.+')->name('product.show');
 });
 
 // Tuyến giới thiệu sinh viên với giá trị mặc định
@@ -48,6 +48,24 @@ Route::get('/banco/{n}', function ($n) {
 // Tuyến đăng ký/đăng nhập
 Route::get('/signin', [AuthController::class, 'SignIn'])->name('signin');
 Route::post('/signin', [AuthController::class, 'CheckSignIn'])->name('auth.checksignin');
+
+// Hiển thị form nhập tuổi và lưu vào session
+Route::get('/age', function () {
+    return view('age');
+})->name('age.form');
+
+Route::post('/age', function (\Illuminate\Http\Request $request) {
+    $request->validate([
+        'age' => 'required',
+    ]);
+    session(['age' => $request->input('age')]);
+    return redirect('/restricted');
+})->name('age.store');
+
+// Route được bảo vệ bởi middleware kiểm tra tuổi
+Route::get('/restricted', function () {
+    return 'Chào mừng! Bạn được phép truy cập.';
+})->middleware(\App\Http\Middleware\CheckAge::class)->name('restricted');
 
 // Tuyến fallback cho 404 - trả về view error.404
 Route::fallback(function () {
