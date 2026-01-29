@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::get('/banco/{n}', function ($n) {
     if ($n < 1) $n = 8;
     return view('banco', compact('n'));
 })->where('n', '[0-9]+')->name('banco');
+
+// Tuyến đăng ký/đăng nhập
+Route::get('/signin', [AuthController::class, 'SignIn'])->name('signin');
+Route::post('/signin', [AuthController::class, 'CheckSignIn'])->name('auth.checksignin');
 
 // Tuyến fallback cho 404 - trả về view error.404
 Route::fallback(function () {

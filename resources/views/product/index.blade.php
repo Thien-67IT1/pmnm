@@ -24,8 +24,6 @@
         <a href="{{ route('product.add') }}"><button>Thêm sản phẩm mới</button></a>
     </p>
 
-    <p><a href="{{ route('product.show', ['id' => '123']) }}">Ví dụ: Hiển thị sản phẩm mặc định (id=123)</a></p>
-
     <p><a href="{{ route('home') ?? url('/') }}">Về trang chủ</a></p>
 </body>
 </html>
